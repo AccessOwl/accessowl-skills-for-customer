@@ -7,7 +7,7 @@
     "url": "https://github.com/AccessOwl"
   },
   "homepage": "https://docs.accessowl.com/guides/ai/accessowl-skills",
-  "repository": "https://github.com/AccessOwl/claude-skills-for-customer",
+  "repository": "https://github.com/AccessOwl/accessowl-skills-for-customer",
   "skills": "./skills/",
   "interface": {
     "displayName": "AccessOwl Skills",

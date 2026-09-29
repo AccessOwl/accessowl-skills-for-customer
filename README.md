@@ -48,9 +48,17 @@ Before installing, [connect Claude Tag to AccessOwl](https://docs.accessowl.com/
 
 Then, as a Claude organization admin:
 
-1. **Fork this repository.** Fork `github.com/AccessOwl/claude-skills-for-customer` into a **private** repository in your organization's GitHub account. Claude only accepts private or internal repositories as organization plugin sources, so your fork is what Claude syncs from.
-2. **Connect your fork.** In claude.ai, go to **Organization settings > Plugins**, add your fork via **Sync from GitHub** (installing the Claude GitHub App on it if prompted), and leave **Sync automatically** on.
-3. **Attach the plugin.** Open the Access bundle that holds your AccessOwl credential, click **+** in its **Plugins** section, and add **AccessOwl Skills**.
+1. **Make a private copy of this repository.** Claude only accepts private or internal repositories as organization plugin sources, and a GitHub fork of a public repository always stays public, so copy it instead of forking it. Create an empty **private** repository in your organization's GitHub account, for example `accessowl-skills`, then copy `github.com/AccessOwl/accessowl-skills-for-customer` into it:
+
+   ```bash
+   git clone --bare https://github.com/AccessOwl/accessowl-skills-for-customer.git
+   git -C accessowl-skills-for-customer.git push --mirror https://github.com/YOUR-ORG/accessowl-skills.git
+   rm -rf accessowl-skills-for-customer.git
+   ```
+
+   Your private copy is what Claude syncs from.
+2. **Connect your copy.** In claude.ai, go to **Organization settings > Plugins & skills**, click **Add**, choose **Sync from GitHub**, select your copy (installing the Claude GitHub App on it if prompted), leave **Sync automatically** on, and click **Create**.
+3. **Turn on the plugin.** Open the Access bundle that holds your AccessOwl credential, go to its **Plugins** tab, and toggle on **AccessOwl Skills**.
 4. **Add the recommended instructions.** Paste these instructions into the custom instructions for your workspace or your access channel:
 
    ```text
@@ -61,11 +69,11 @@ That's it. Mention `@Claude` in your access channel and ask.
 
 ## Staying up to date
 
-- **Claude Tag:** Claude syncs from your fork, so pull upstream changes with
-  GitHub's **Sync fork** button when a new version ships, or enable Actions
-  on your fork once and the bundled `sync-upstream` workflow pulls them in
-  daily. New conversations pick up skill updates automatically; ongoing ones
-  keep the version they started with.
+Claude syncs from your private copy. The bundled `sync-upstream` workflow
+pulls new versions from this repository into your copy every day while GitHub
+Actions is enabled on it, and you can run it right away from your copy's
+**Actions** tab when a new version ships. New conversations pick up skill
+updates automatically; ongoing ones keep the version they started with.
 
 ## Learn more
 

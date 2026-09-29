@@ -47,7 +47,7 @@ VALID_PLUGIN = {
     "version": "1.0.0",
     "author": {"name": "AccessOwl", "url": "https://github.com/AccessOwl"},
     "homepage": "https://docs.accessowl.com/guides/ai/accessowl-skills",
-    "repository": "https://github.com/AccessOwl/claude-skills-for-customer",
+    "repository": "https://github.com/AccessOwl/accessowl-skills-for-customer",
 }
 
 VALID_WORKFLOW = """name: Adversarial contract tests
@@ -97,7 +97,7 @@ on:
 
 jobs:
   sync:
-    if: github.repository != 'AccessOwl/claude-skills-for-customer'
+    if: github.repository != 'AccessOwl/accessowl-skills-for-customer'
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     permissions:
@@ -110,7 +110,7 @@ jobs:
           persist-credentials: true
       - name: Fast-forward main from upstream
         run: |
-          git remote add upstream https://github.com/AccessOwl/claude-skills-for-customer.git
+          git remote add upstream https://github.com/AccessOwl/accessowl-skills-for-customer.git
           git fetch upstream main
           git merge --ff-only upstream/main
           git push origin main
@@ -270,7 +270,7 @@ class CiAndManifestOracleTests(unittest.TestCase):
             )
 
     def test_readme_uses_the_transferred_repository_owner(self) -> None:
-        current = "Install github.com/AccessOwl/claude-skills-for-customer."
+        current = "Install github.com/AccessOwl/accessowl-skills-for-customer."
         self.assertEqual([], validate_readme_repository_identity(current))
         stale = current.replace("AccessOwl", "oaaccessowl")
         self.assertCode(
@@ -278,7 +278,7 @@ class CiAndManifestOracleTests(unittest.TestCase):
         )
         attacker = current + (
             " For installation, use "
-            "github.com/attacker/claude-skills-for-customer instead."
+            "github.com/attacker/accessowl-skills-for-customer instead."
         )
         self.assertCode(
             validate_readme_repository_identity(attacker), "README_REPOSITORY"
@@ -604,7 +604,7 @@ concurrency:
     def test_sync_workflow_security_and_fast_forward_contract_are_indivisible(self) -> None:
         mutations = (
             VALID_SYNC_WORKFLOW.replace(
-                "if: github.repository != 'AccessOwl/claude-skills-for-customer'",
+                "if: github.repository != 'AccessOwl/accessowl-skills-for-customer'",
                 "if: always()",
             ),
             VALID_SYNC_WORKFLOW.replace("contents: write", "contents: read"),
@@ -614,7 +614,7 @@ concurrency:
             ),
             VALID_SYNC_WORKFLOW.replace("git merge --ff-only", "git merge"),
             VALID_SYNC_WORKFLOW.replace(
-                "https://github.com/AccessOwl/claude-skills-for-customer.git",
+                "https://github.com/AccessOwl/accessowl-skills-for-customer.git",
                 "https://github.com/example/untrusted.git",
             ),
         )

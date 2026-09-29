@@ -37,8 +37,8 @@ EXPECTED_CODEX_POLICY = {"installation": "AVAILABLE", "authentication": "ON_INST
 EXPECTED_AUTHOR = {"name": "AccessOwl", "url": "https://github.com/AccessOwl"}
 EXPECTED_PLUGIN_SOURCE = "./plugins/accessowl"
 EXPECTED_PLUGIN_HOMEPAGE = "https://docs.accessowl.com/guides/ai/accessowl-skills"
-EXPECTED_PLUGIN_REPOSITORY = "https://github.com/AccessOwl/claude-skills-for-customer"
-EXPECTED_README_REPOSITORY = "github.com/AccessOwl/claude-skills-for-customer"
+EXPECTED_PLUGIN_REPOSITORY = "https://github.com/AccessOwl/accessowl-skills-for-customer"
+EXPECTED_README_REPOSITORY = "github.com/AccessOwl/accessowl-skills-for-customer"
 CHECKOUT_ACTION_SHA = "34e114876b0b11c390a56381ad16ebd13914f8d5"
 SETUP_PYTHON_ACTION_SHA = "a26af69be951a213d495a4c3e4e4022e16d87065"
 EXPECTED_WORKFLOW_ACTIVE_LINES: Tuple[str, ...] = (
@@ -83,7 +83,7 @@ EXPECTED_SYNC_WORKFLOW_ACTIVE_LINES: Tuple[str, ...] = (
     "  workflow_dispatch:",
     "jobs:",
     "  sync:",
-    "    if: github.repository != 'AccessOwl/claude-skills-for-customer'",
+    "    if: github.repository != 'AccessOwl/accessowl-skills-for-customer'",
     "    runs-on: ubuntu-24.04",
     "    timeout-minutes: 5",
     "    permissions:",
@@ -96,7 +96,7 @@ EXPECTED_SYNC_WORKFLOW_ACTIVE_LINES: Tuple[str, ...] = (
     "          persist-credentials: true",
     "      - name: Fast-forward main from upstream",
     "        run: |",
-    "          git remote add upstream https://github.com/AccessOwl/claude-skills-for-customer.git",
+    "          git remote add upstream https://github.com/AccessOwl/accessowl-skills-for-customer.git",
     "          git fetch upstream main",
     "          git merge --ff-only upstream/main",
     "          git push origin main",
@@ -146,7 +146,7 @@ ALLOWED_REPOSITORY_FILES = frozenset(
     | {SKILL_ROOT / skill / API_RULES_RELATIVE for skill in EXPECTED_SKILLS}
 )
 APPROVED_CONTENT_SHA256: Mapping[Path, str] = {
-    Path("README.md"): "1215b93334b2cb108a17571257298a8a016c85109c94c153465fafaea592a6e2",
+    Path("README.md"): "527172f7d48830586c343f1a7fde6398f8574f0a5f339539d43321dbb9c24636",
     Path("SKILL_STYLE.md"): "f107d23881f0fd5b0db00af325c5131618f399292dcb416544a922e3cae53a68",
     SKILL_ROOT / "access-report" / "SKILL.md": "92287d7aa645ed8f19da7d49908f152f2114eadf97df201da986eca25422ce2c",
     SKILL_ROOT / "close-request" / "SKILL.md": "8929ba223407f7c8301a69d53d9c0e048c98daeb0919cb91a0b01d718c3b35be",

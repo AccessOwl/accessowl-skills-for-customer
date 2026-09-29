@@ -72,12 +72,12 @@ _SEMVER = re.compile(
 # They pin tests/api_contract.py, which in turn pins APPROVED_CONTENT_SHA256.
 APPROVED_HARNESS_SHA256: Mapping[Path, str] = {
     Path("tests/__init__.py"): "4edc2608a674618b5c120c5e3c0a534975575dc72b4f9905db9d40f41308befa",
-    Path("tests/api_contract.py"): "8e7e1b9d548704db328d68e87ac5b9b2df54406b8a1a905dab0c41a519aaf307",
+    Path("tests/api_contract.py"): "b011bc7dc89d4fd4b701bc0ceb38570e259a8d4e815077f75420ac5c24698f21",
     Path("tests/run_tests.py"): "e4799c9740af405e0a6edfd0d33d557cfed74603dd7fd560cce3b7a5c5f39d4f",
     Path("tests/skill_semantics.py"): "056e4efdcab38aff0b0705cb36d2e379b3043649306c99abd8289f7cfec0dc17",
     Path("tests/test_adversarial_oracles.py"): "edfb28cf90e62ce1b7fe814ba375bc8c9c0a147efbdfc82695f41d3836543062",
     Path("tests/test_api_semantic_oracles.py"): "7389155823ae746c479513018c46045e4dc6d3b14e75a0a04feeb965b2ec9347",
-    Path("tests/test_ci_manifest_oracles.py"): "ee98c9367710b9a271c8b579656b2128b6d0f772c2e7048e53aae0c5dca4b0af",
+    Path("tests/test_ci_manifest_oracles.py"): "0d88ddd5a4fd5c79f7222be787577d5951adddfc7e67dd35b59658434c88d43a",
     Path("tests/test_output_semantic_oracles.py"): "8bcb3546fea3cb040129fad0c2aa646b40d4c438efbae2a8e5aeff26ddaf49b1",
     Path("tests/test_repository_contract.py"): "ace6db9f382d7cbc7d1112531d8370675afe950907a3fa5006081fcdfde2fce2",
     Path("tests/test_write_semantic_oracles.py"): "46518601350e826de4e181a044b8430fba0101976cdf554d3440b39f7cd442ff",
@@ -880,7 +880,7 @@ def _readme_skill_names(text: str) -> List[str]:
 
 def validate_readme_repository_identity(text: str) -> List[Issue]:
     repository_references = re.findall(
-        r"github\.com/[A-Za-z0-9_.-]+/claude-skills-for-customer",
+        r"github\.com/[A-Za-z0-9_.-]+/accessowl-skills-for-customer",
         text,
         re.I,
     )
